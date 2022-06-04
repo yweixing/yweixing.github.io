@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="google-site-verification=Ep_AMKRluH_PXI77CT4B7cB6zWHg846I2QDWaX-B2pc" />
+  
+  
+    <meta name="baidu-site-verification" content="code-aC9z0FApX3" />
+  
+  
+  <title>Mybatis Generator 代码自动生成工具最全解析 | William Yang</title>
+  <meta name="description" content="日记 工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis Generator 代码自动生成工具最全解析">
+<meta property="og:url" content="https://www.yangweixing.top/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="人生的印记">
+<meta property="og:description" content="日记 工具">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-02T03:36:00.000Z">
+<meta property="article:modified_time" content="2022-06-04T12:19:27.839Z">
+<meta property="article:author" content="William Yang">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.yangweixing.top/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="人生的印记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yweixing" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">William Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yweixing" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-%E8%84%9A%E6%89%8B%E6%9E%B6/" rel="tag">JAVA 脚手架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/" rel="tag">日记本</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-JAVA/" rel="tag">设计模式 单例模式 JAVA</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/JAVA-%E8%84%9A%E6%89%8B%E6%9E%B6/" style="font-size: 13px;">JAVA 脚手架</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13px;">MySQL</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 13.67px;">微服务</a> <a href="/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/" style="font-size: 14px;">日记本</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-JAVA/" style="font-size: 13px;">设计模式 单例模式 JAVA</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/06/04/JAVA-%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%B1%87%E7%BC%96/" class="title">JAVA 开发脚手架汇编</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-06-04T13:27:01.000Z" itemprop="datePublished">2022-06-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/02/%E5%9C%A8Java%E4%B8%AD%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%86%99%E4%B8%80%E4%B8%AA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%9F/" class="title">在Java中如何正确写一个单例模式？</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-02T11:47:00.000Z" itemprop="datePublished">2020-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/09/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%8A%80%E6%9C%AF%E6%A0%88/" class="title">微服务 之 技术栈</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-09T13:00:00.000Z" itemprop="datePublished">2019-12-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/" class="title">微服务 之 概念</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-27T14:36:00.000Z" itemprop="datePublished">2019-11-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/07/23/gulp-babel%E5%8F%96%E6%B6%88%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8Fuse%20strict/" class="title">gulp-babel 取消严格模式(&#34;use strict&#34;)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-07-23T01:38:00.000Z" itemprop="datePublished">2019-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Mybatis Generator 代码自动生成工具最全解析" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis Generator 代码自动生成工具最全解析
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/" class="article-date">
+	  <time datetime="2019-01-02T03:36:00.000Z" itemprop="datePublished">2019-01-02</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="概述">概述</h3>
+<p>我们无需手动编写 实体类、DAO、XML 配置文件，只需要使用 MyBatis 提供的一个 Maven 插件就可以自动生成所需的各种文件便能够满足基本的业务需求，如果业务比较复杂只需要修改相关文件即可。</p>
+<span id="more"></span>
+<h3 id="配置插件">配置插件</h3>
+<p>在 <code>pom.xml</code> 文件中增加 <code>mybatis-generator-maven-plugin</code> 插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.3.7&lt;/version&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;configurationFile&gt;$&#123;basedir&#125;/src/main/resources/generator/generatorConfig.xml&lt;/configurationFile&gt;</span><br><span class="line">                &lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">                &lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">            &lt;dependencies&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">                    &lt;version&gt;$&#123;mysql.version&#125;&lt;/version&gt;</span><br><span class="line">                &lt;/dependency&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                    &lt;groupId&gt;tk.mybatis&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;mapper&lt;/artifactId&gt;</span><br><span class="line">                    &lt;version&gt;4.1.5&lt;/version&gt;</span><br><span class="line">                &lt;/dependency&gt;</span><br><span class="line">            &lt;/dependencies&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
+<p>注意： configurationFile 自动生成所需的配置文件路径</p>
+<h3 id="自动生成的配置">自动生成的配置</h3>
+<p>在 <code>src/main/resources/generator/</code> 目录下创建 <code>generatorConfig.xml</code> 配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">    &lt;!-- 引入数据库连接配置 --&gt;</span><br><span class="line">    &lt;properties resource=&quot;jdbc.properties&quot;/&gt;</span><br><span class="line">    &lt;context id=&quot;Mysql&quot; targetRuntime=&quot;MyBatis3Simple&quot; defaultModelType=&quot;flat&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;beginningDelimiter&quot; value=&quot;`&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;endingDelimiter&quot; value=&quot;`&quot;/&gt;</span><br><span class="line">        &lt;!-- 配置 tk.mybatis 插件 --&gt;</span><br><span class="line">        &lt;plugin type=&quot;tk.mybatis.mapper.generator.MapperPlugin&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;mappers&quot; value=&quot;xyz.yangweixing.MyMapper&quot;/&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">        &lt;!-- 配置数据库连接 --&gt;</span><br><span class="line">        &lt;jdbcConnection</span><br><span class="line">                driverClass=&quot;$&#123;jdbc.driverClass&#125;&quot;</span><br><span class="line">                connectionURL=&quot;$&#123;jdbc.connectionURL&#125;&quot;</span><br><span class="line">                userId=&quot;$&#123;jdbc.username&#125;&quot;</span><br><span class="line">                password=&quot;$&#123;jdbc.password&#125;&quot;&gt;</span><br><span class="line">        &lt;/jdbcConnection&gt;</span><br><span class="line">        &lt;!-- 配置实体类存放路径 --&gt;</span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;xyz.yangweixing.domain&quot; targetProject=&quot;src/main/java&quot;/&gt;</span><br><span class="line">        &lt;!-- 配置 XML 存放路径 --&gt;</span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot; targetProject=&quot;src/main/resources&quot;/&gt;</span><br><span class="line">        &lt;!-- 配置 DAO 存放路径 --&gt;</span><br><span class="line">        &lt;javaClientGenerator</span><br><span class="line">                targetPackage=&quot;xyz.yangweixing.mapper&quot;</span><br><span class="line">                targetProject=&quot;src/main/java&quot;</span><br><span class="line">                type=&quot;XMLMAPPER&quot;/&gt;</span><br><span class="line">        &lt;!-- 配置需要指定生成的数据库和表，% 代表所有表 --&gt;</span><br><span class="line">        &lt;table catalog=&quot;myshop&quot; tableName=&quot;%&quot;&gt;</span><br><span class="line">            &lt;!-- 默认为 false，如果设置为 true，在生成的 SQL 中，table 名字不会加上 catalog 或 schema --&gt;</span><br><span class="line">            &lt;property name=&quot;ignoreQualifiersAtRuntime&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- mysql 配置 --&gt;</span><br><span class="line">            &lt;generatedKey column=&quot;id&quot; sqlStatement=&quot;Mysql&quot; identity=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="配置数据源">配置数据源</h3>
+<p>在 <code>src/main/resources</code> 目录下创建 <code>jdbc.properties</code> 数据源配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClass=com.mysql.cj.jdbc.Driver</span><br><span class="line">jdbc.connectionURL=jdbc:mysql://192.168.141.130:3306/myshop?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=123456</span><br></pre></td></tr></table></figure>
+<h3 id="附：扩展阅读">附：扩展阅读</h3>
+<h3 id="完整配置案例说明">完整配置案例说明</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line">&lt;!-- 配置生成器 --&gt;</span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">&lt;!-- 可以用于加载配置项或者配置文件，在整个配置文件中就可以使用$&#123;propertyKey&#125;的方式来引用配置项</span><br><span class="line">    resource：配置资源加载地址，使用resource，MBG从classpath开始找，比如com/myproject/generatorConfig.properties        </span><br><span class="line">    url：配置资源加载地质，使用URL的方式，比如file:///C:/myfolder/generatorConfig.properties.</span><br><span class="line">    注意，两个属性只能选址一个;</span><br><span class="line">    另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用</span><br><span class="line">&lt;properties resource=&quot;&quot; url=&quot;&quot; /&gt;</span><br><span class="line"> --&gt;</span><br><span class="line"> &lt;!-- 在MBG工作的时候，需要额外加载的依赖包</span><br><span class="line">     location属性指明加载jar/zip包的全路径</span><br><span class="line">&lt;classPathEntry location=&quot;/Program Files/IBM/SQLLIB/java/db2java.zip&quot; /&gt;</span><br><span class="line">  --&gt;</span><br><span class="line">&lt;!-- </span><br><span class="line">    context:生成一组对象的环境 </span><br><span class="line">    id:必选，上下文id，用于在生成错误时提示</span><br><span class="line">    defaultModelType:指定生成对象的样式</span><br><span class="line">        1，conditional：类似hierarchical；</span><br><span class="line">        2，flat：所有内容（主键，blob）等全部生成在一个对象中；</span><br><span class="line">        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)</span><br><span class="line">    targetRuntime:</span><br><span class="line">        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；</span><br><span class="line">        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；</span><br><span class="line">    introspectedColumnImpl：类全限定名，用于扩展MBG</span><br><span class="line">--&gt;</span><br><span class="line">&lt;context id=&quot;mysql&quot; defaultModelType=&quot;hierarchical&quot; targetRuntime=&quot;MyBatis3Simple&quot; &gt;</span><br><span class="line">    &lt;!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；</span><br><span class="line">        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;property name=&quot;autoDelimitKeywords&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">    &lt;!-- 生成的Java文件的编码 --&gt;</span><br><span class="line">    &lt;property name=&quot;javaFileEncoding&quot; value=&quot;UTF-8&quot;/&gt;</span><br><span class="line">    &lt;!-- 格式化java代码 --&gt;</span><br><span class="line">    &lt;property name=&quot;javaFormatter&quot; value=&quot;org.mybatis.generator.api.dom.DefaultJavaFormatter&quot;/&gt;</span><br><span class="line">    &lt;!-- 格式化XML代码 --&gt;</span><br><span class="line">    &lt;property name=&quot;xmlFormatter&quot; value=&quot;org.mybatis.generator.api.dom.DefaultXmlFormatter&quot;/&gt;</span><br><span class="line">    &lt;!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； --&gt;</span><br><span class="line">    &lt;property name=&quot;beginningDelimiter&quot; value=&quot;`&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;endingDelimiter&quot; value=&quot;`&quot;/&gt;</span><br><span class="line">    &lt;!-- 必须要有的，使用这个配置链接数据库</span><br><span class="line">        @TODO:是否可以扩展</span><br><span class="line">        # MySQL 8.x: com.mysql.cj.jdbc.Driver</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot; connectionURL=&quot;jdbc:mysql:///pss&quot; userId=&quot;root&quot; password=&quot;admin&quot;&gt;</span><br><span class="line">        &lt;!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 --&gt;</span><br><span class="line">    &lt;/jdbcConnection&gt;</span><br><span class="line">    &lt;!-- java类型处理器 </span><br><span class="line">        用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；</span><br><span class="line">        注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型； </span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;javaTypeResolver type=&quot;org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl&quot;&gt;</span><br><span class="line">        &lt;!-- </span><br><span class="line">            true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型</span><br><span class="line">            false：默认,</span><br><span class="line">                scale&gt;0;length&gt;18：使用BigDecimal;</span><br><span class="line">                scale=0;length[10,18]：使用Long；</span><br><span class="line">                scale=0;length[5,9]：使用Integer；</span><br><span class="line">                scale=0;length&lt;5：使用Short；</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">    &lt;/javaTypeResolver&gt;</span><br><span class="line">    &lt;!-- java模型创建器，是必须要的元素</span><br><span class="line">        负责：1，key类（见context的defaultModelType）；2，java类；3，查询类</span><br><span class="line">        targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；</span><br><span class="line">        targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;javaModelGenerator targetPackage=&quot;xyz.yangweixing.domain&quot; targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">        &lt;!--  for MyBatis3/MyBatis3Simple</span><br><span class="line">            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;property name=&quot;constructorBased&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span><br><span class="line">        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;!-- for MyBatis3 / MyBatis3Simple</span><br><span class="line">            是否创建一个不可变的类，如果为true，</span><br><span class="line">            那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;property name=&quot;immutable&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 设置一个根对象，</span><br><span class="line">            如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项</span><br><span class="line">            注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：</span><br><span class="line">                1，属性名相同，类型相同，有相同的getter/setter方法；</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;property name=&quot;rootClass&quot; value=&quot;xyz.yangweixing.domain.BaseDomain&quot;/&gt;</span><br><span class="line">        &lt;!-- 设置是否在getter方法中，对String类型字段调用trim()方法 --&gt;</span><br><span class="line">        &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;/javaModelGenerator&gt;</span><br><span class="line">    &lt;!-- 生成SQL map的XML文件生成器，</span><br><span class="line">        注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），</span><br><span class="line">            或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置</span><br><span class="line">        targetPackage/targetProject:同javaModelGenerator</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;sqlMapGenerator targetPackage=&quot;xyz.yangweixing.mapper&quot; targetProject=&quot;src/main/resources&quot;&gt;</span><br><span class="line">        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span><br><span class="line">        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;/sqlMapGenerator&gt;</span><br><span class="line">    &lt;!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口 </span><br><span class="line">        targetPackage/targetProject:同javaModelGenerator</span><br><span class="line">        type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：</span><br><span class="line">            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；</span><br><span class="line">            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；</span><br><span class="line">            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；</span><br><span class="line">        注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;javaClientGenerator targetPackage=&quot;xyz.yangweixing.mapper&quot; type=&quot;ANNOTATEDMAPPER&quot; targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span><br><span class="line">        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查</span><br><span class="line">        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;</span><br><span class="line">         --&gt;</span><br><span class="line">    &lt;/javaClientGenerator&gt;</span><br><span class="line">    &lt;!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素</span><br><span class="line">        选择的table会生成一下文件：</span><br><span class="line">        1，SQL map文件</span><br><span class="line">        2，生成一个主键类；</span><br><span class="line">        3，除了BLOB和主键的其他字段的类；</span><br><span class="line">        4，包含BLOB的类；</span><br><span class="line">        5，一个用户生成动态查询的条件类（selectByExample, deleteByExample），可选；</span><br><span class="line">        6，Mapper接口（可选）</span><br><span class="line">        tableName（必要）：要生成对象的表名；</span><br><span class="line">        注意：大小写敏感问题。正常情况下，MBG会自动的去识别数据库标识符的大小写敏感度，在一般情况下，MBG会</span><br><span class="line">            根据设置的schema，catalog或tablename去查询数据表，按照下面的流程：</span><br><span class="line">            1，如果schema，catalog或tablename中有空格，那么设置的是什么格式，就精确的使用指定的大小写格式去查询；</span><br><span class="line">            2，否则，如果数据库的标识符使用大写的，那么MBG自动把表名变成大写再查找；</span><br><span class="line">            3，否则，如果数据库的标识符使用小写的，那么MBG自动把表名变成小写再查找；</span><br><span class="line">            4，否则，使用指定的大小写格式查询；</span><br><span class="line">        另外的，如果在创建表的时候，使用的&quot;&quot;把数据库对象规定大小写，就算数据库标识符是使用的大写，在这种情况下也会使用给定的大小写来创建表名；</span><br><span class="line">        这个时候，请设置delimitIdentifiers=&quot;true&quot;即可保留大小写格式；</span><br><span class="line">        可选：</span><br><span class="line">        1，schema：数据库的schema；</span><br><span class="line">        2，catalog：数据库的catalog；</span><br><span class="line">        3，alias：为数据表设置的别名，如果设置了alias，那么生成的所有的SELECT SQL语句中，列名会变成：alias_actualColumnName</span><br><span class="line">        4，domainObjectName：生成的domain类的名字，如果不设置，直接使用表名作为domain类的名字；可以设置为somepck.domainName，那么会自动把domainName类再放到somepck包里面；</span><br><span class="line">        5，enableInsert（默认true）：指定是否生成insert语句；</span><br><span class="line">        6，enableSelectByPrimaryKey（默认true）：指定是否生成按照主键查询对象的语句（就是getById或get）；</span><br><span class="line">        7，enableSelectByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询语句；</span><br><span class="line">        8，enableUpdateByPrimaryKey（默认true）：指定是否生成按照主键修改对象的语句（即update)；</span><br><span class="line">        9，enableDeleteByPrimaryKey（默认true）：指定是否生成按照主键删除对象的语句（即delete）；</span><br><span class="line">        10，enableDeleteByExample（默认true）：MyBatis3Simple为false，指定是否生成动态删除语句；</span><br><span class="line">        11，enableCountByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询总条数语句（用于分页的总条数查询）；</span><br><span class="line">        12，enableUpdateByExample（默认true）：MyBatis3Simple为false，指定是否生成动态修改语句（只修改对象中不为空的属性）；</span><br><span class="line">        13，modelType：参考context元素的defaultModelType，相当于覆盖；</span><br><span class="line">        14，delimitIdentifiers：参考tableName的解释，注意，默认的delimitIdentifiers是双引号，如果类似MYSQL这样的数据库，使用的是`（反引号，那么还需要设置context的beginningDelimiter和endingDelimiter属性）</span><br><span class="line">        15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性</span><br><span class="line">        注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；</span><br><span class="line">     --&gt;</span><br><span class="line">    &lt;table tableName=&quot;userinfo&quot; &gt;</span><br><span class="line">        &lt;!-- 参考 javaModelGenerator 的 constructorBased属性--&gt;</span><br><span class="line">        &lt;property name=&quot;constructorBased&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； --&gt;</span><br><span class="line">        &lt;property name=&quot;ignoreQualifiersAtRuntime&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 参考 javaModelGenerator 的 immutable 属性 --&gt;</span><br><span class="line">        &lt;property name=&quot;immutable&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 --&gt;</span><br><span class="line">        &lt;property name=&quot;modelOnly&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- 参考 javaModelGenerator 的 rootClass 属性 </span><br><span class="line">        &lt;property name=&quot;rootClass&quot; value=&quot;&quot;/&gt;</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;!-- 参考javaClientGenerator 的  rootInterface 属性</span><br><span class="line">        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog </span><br><span class="line">        &lt;property name=&quot;runtimeCatalog&quot; value=&quot;&quot;/&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema </span><br><span class="line">        &lt;property name=&quot;runtimeSchema&quot; value=&quot;&quot;/&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename </span><br><span class="line">        &lt;property name=&quot;runtimeTableName&quot; value=&quot;&quot;/&gt;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;!-- 注意，该属性只针对MyBatis3Simple有用；</span><br><span class="line">            如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;property name=&quot;selectAllOrderByClause&quot; value=&quot;age desc,username asc&quot;/&gt;</span><br><span class="line">        &lt;!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate --&gt;</span><br><span class="line">        &lt;property name=&quot;useActualColumnNames&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;!-- generatedKey用于生成生成主键的方法，</span><br><span class="line">            如果设置了该元素，MBG会在生成的&lt;insert&gt;元素中生成一条正确的&lt;selectKey&gt;元素，该元素可选</span><br><span class="line">            column:主键的列名；</span><br><span class="line">            sqlStatement：要生成的selectKey语句，有以下可选项：</span><br><span class="line">                Cloudscape:相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()</span><br><span class="line">                DB2       :相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()</span><br><span class="line">                DB2_MF    :相当于selectKey的SQL为：SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1</span><br><span class="line">                Derby      :相当于selectKey的SQL为：VALUES IDENTITY_VAL_LOCAL()</span><br><span class="line">                HSQLDB      :相当于selectKey的SQL为：CALL IDENTITY()</span><br><span class="line">                Informix  :相当于selectKey的SQL为：select dbinfo(&#x27;sqlca.sqlerrd1&#x27;) from systables where tabid=1</span><br><span class="line">                MySql      :相当于selectKey的SQL为：SELECT LAST_INSERT_ID()</span><br><span class="line">                SqlServer :相当于selectKey的SQL为：SELECT SCOPE_IDENTITY()</span><br><span class="line">                SYBASE      :相当于selectKey的SQL为：SELECT @@IDENTITY</span><br><span class="line">                JDBC      :相当于在生成的insert元素上添加useGeneratedKeys=&quot;true&quot;和keyProperty属性</span><br><span class="line">        &lt;generatedKey column=&quot;&quot; sqlStatement=&quot;&quot;/&gt;</span><br><span class="line">         --&gt;</span><br><span class="line">        &lt;!-- </span><br><span class="line">            该元素会在根据表中列名计算对象属性名之前先重命名列名，非常适合用于表中的列都有公用的前缀字符串的时候，</span><br><span class="line">            比如列名为：CUST_ID,CUST_NAME,CUST_EMAIL,CUST_ADDRESS等；</span><br><span class="line">            那么就可以设置searchString为&quot;^CUST_&quot;，并使用空白替换，那么生成的Customer对象中的属性名称就不是</span><br><span class="line">            custId,custName等，而是先被替换为ID,NAME,EMAIL,然后变成属性：id，name，email；</span><br><span class="line">            注意，MBG是使用java.util.regex.Matcher.replaceAll来替换searchString和replaceString的，</span><br><span class="line">            如果使用了columnOverride元素，该属性无效；</span><br><span class="line">        &lt;columnRenamingRule searchString=&quot;&quot; replaceString=&quot;&quot;/&gt;</span><br><span class="line">         --&gt;</span><br><span class="line">         &lt;!-- 用来修改表中某个列的属性，MBG会使用修改后的列来生成domain的属性；</span><br><span class="line">             column:要重新设置的列名；</span><br><span class="line">             注意，一个table元素中可以有多个columnOverride元素哈~</span><br><span class="line">          --&gt;</span><br><span class="line">         &lt;columnOverride column=&quot;username&quot;&gt;</span><br><span class="line">             &lt;!-- 使用property属性来指定列要生成的属性名称 --&gt;</span><br><span class="line">             &lt;property name=&quot;property&quot; value=&quot;userName&quot;/&gt;</span><br><span class="line">             &lt;!-- javaType用于指定生成的domain的属性类型，使用类型的全限定名</span><br><span class="line">             &lt;property name=&quot;javaType&quot; value=&quot;&quot;/&gt;</span><br><span class="line">              --&gt;</span><br><span class="line">             &lt;!-- jdbcType用于指定该列的JDBC类型 </span><br><span class="line">             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;</span><br><span class="line">              --&gt;</span><br><span class="line">             &lt;!-- typeHandler 用于指定该列使用到的TypeHandler，如果要指定，配置类型处理器的全限定名</span><br><span class="line">                 注意，mybatis中，不会生成到mybatis-config.xml中的typeHandler</span><br><span class="line">                 只会生成类似：where id = #&#123;id,jdbcType=BIGINT,typeHandler=xyz.yangweixing.MyTypeHandler&#125;的参数描述</span><br><span class="line">             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;</span><br><span class="line">             --&gt;</span><br><span class="line">             &lt;!-- 参考table元素的delimitAllColumns配置，默认为false</span><br><span class="line">             &lt;property name=&quot;delimitedColumnName&quot; value=&quot;&quot;/&gt;</span><br><span class="line">              --&gt;</span><br><span class="line">         &lt;/columnOverride&gt;</span><br><span class="line">         &lt;!-- ignoreColumn设置一个MGB忽略的列，如果设置了改列，那么在生成的domain中，生成的SQL中，都不会有该列出现 </span><br><span class="line">             column:指定要忽略的列的名字；</span><br><span class="line">             delimitedColumnName：参考table元素的delimitAllColumns配置，默认为false</span><br><span class="line">             注意，一个table元素中可以有多个ignoreColumn元素</span><br><span class="line">         &lt;ignoreColumn column=&quot;deptId&quot; delimitedColumnName=&quot;&quot;/&gt;</span><br><span class="line">         --&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="ChangeLog">ChangeLog</h2>
+<ul>
+<li>2019.01.02 11:36 初稿</li>
+<li>2019.07.12 20:30 更新</li>
+<li>2019.12.15 15:00 更新</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.yangweixing.top/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/" title="Mybatis Generator 代码自动生成工具最全解析" target="_blank" rel="external">https://www.yangweixing.top/2019/01/02/Mybatis Generator 代码自动生成工具最全解析/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yweixing" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yweixing" target="_blank"><span class="text-dark">William Yang</span><small class="ml-1x">Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/01/20/Docker%20%E7%AE%80%E4%BB%8B/" title="Docker 简介"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/12/01/Linux%E9%85%8D%E7%BD%AESSH-Key%E5%88%B0GitHub/" title="Linux配置SSH Key到GitHub"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yweixing" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2022 William Yang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/yweixing" target="_blank"> yweixing </a>base on <a href="https://github.com/yweixing" target="_blank">yweixing</a>.
+        </div>
+    </div>
+    <div class="copyright">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次<br/>
+        本站访客数 <span id="busuanzi_value_site_uv"></span>人次
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'yPzzmU80dVte9V4bCTuM78Xk-9Nh9j0Va',
+    appKey: 'rcfot8mKlgaudeKtprYb73HT',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'weixing.info@gmail.com', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

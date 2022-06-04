@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>人生的印记</title>
+  
+  
+  <link href="https://www.yangweixing.top/atom.xml" rel="self"/>
+  
+  <link href="https://www.yangweixing.top/"/>
+  <updated>2022-06-04T13:30:34.322Z</updated>
+  <id>https://www.yangweixing.top/</id>
+  
+  <author>
+    <name>William Yang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA 开发脚手架汇编</title>
+    <link href="https://www.yangweixing.top/2022/06/04/JAVA-%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%B1%87%E7%BC%96/"/>
+    <id>https://www.yangweixing.top/2022/06/04/JAVA-%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%B1%87%E7%BC%96/</id>
+    <published>2022-06-04T13:27:01.000Z</published>
+    <updated>2022-06-04T13:30:34.322Z</updated>
+    
+    
+    <summary type="html">脚手架</summary>
+    
+    
+    
+    
+    <category term="JAVA 脚手架" scheme="https://www.yangweixing.top/tags/JAVA-%E8%84%9A%E6%89%8B%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Java中如何正确写一个单例模式？</title>
+    <link href="https://www.yangweixing.top/2020/01/02/%E5%9C%A8Java%E4%B8%AD%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%86%99%E4%B8%80%E4%B8%AA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%9F/"/>
+    <id>https://www.yangweixing.top/2020/01/02/%E5%9C%A8Java%E4%B8%AD%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%86%99%E4%B8%80%E4%B8%AA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%9F/</id>
+    <published>2020-01-02T11:47:00.000Z</published>
+    <updated>2022-06-04T12:19:27.841Z</updated>
+    
+    
+    <summary type="html">Java中如何正确写一个单例模式</summary>
+    
+    
+    
+    
+    <category term="设计模式 单例模式 JAVA" scheme="https://www.yangweixing.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务 之 技术栈</title>
+    <link href="https://www.yangweixing.top/2019/12/09/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%8A%80%E6%9C%AF%E6%A0%88/"/>
+    <id>https://www.yangweixing.top/2019/12/09/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%8A%80%E6%9C%AF%E6%A0%88/</id>
+    <published>2019-12-09T13:00:00.000Z</published>
+    <updated>2022-06-04T12:19:27.841Z</updated>
+    
+    
+    <summary type="html">微服务技术栈</summary>
+    
+    
+    
+    
+    <category term="微服务" scheme="https://www.yangweixing.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务 之 概念</title>
+    <link href="https://www.yangweixing.top/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/"/>
+    <id>https://www.yangweixing.top/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/</id>
+    <published>2019-11-27T14:36:00.000Z</published>
+    <updated>2022-06-04T12:19:27.841Z</updated>
+    
+    
+    <summary type="html">微服务概念</summary>
+    
+    
+    
+    
+    <category term="微服务" scheme="https://www.yangweixing.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gulp-babel 取消严格模式(&quot;use strict&quot;)</title>
+    <link href="https://www.yangweixing.top/2019/07/23/gulp-babel%E5%8F%96%E6%B6%88%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8Fuse%20strict/"/>
+    <id>https://www.yangweixing.top/2019/07/23/gulp-babel%E5%8F%96%E6%B6%88%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8Fuse%20strict/</id>
+    <published>2019-07-23T01:38:00.000Z</published>
+    <updated>2022-06-04T12:19:27.840Z</updated>
+    
+    
+    <summary type="html">gulp-babel 取消严格模式(&quot;use strict&quot;)</summary>
+    
+    
+    
+    
+    <category term="日记本" scheme="https://www.yangweixing.top/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git分支的创建、删除、切换</title>
+    <link href="https://www.yangweixing.top/2019/07/01/Git%E5%88%86%E6%94%AF%E7%9A%84%E5%88%9B%E5%BB%BA%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E5%88%87%E6%8D%A2/"/>
+    <id>https://www.yangweixing.top/2019/07/01/Git%E5%88%86%E6%94%AF%E7%9A%84%E5%88%9B%E5%BB%BA%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E5%88%87%E6%8D%A2/</id>
+    <published>2019-07-01T02:06:00.000Z</published>
+    <updated>2022-06-04T12:19:27.838Z</updated>
+    
+    
+    <summary type="html">Git分支的创建、删除、切换</summary>
+    
+    
+    
+    
+    <category term="日记本" scheme="https://www.yangweixing.top/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git彻底删除历史提交记录的方法</title>
+    <link href="https://www.yangweixing.top/2019/06/05/Git%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://www.yangweixing.top/2019/06/05/Git%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <published>2019-06-05T02:22:00.000Z</published>
+    <updated>2022-06-04T12:19:27.838Z</updated>
+    
+    
+    <summary type="html">Git彻底删除历史提交记录的方法</summary>
+    
+    
+    
+    
+    <category term="日记本" scheme="https://www.yangweixing.top/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>玩转MySQL优化命令</title>
+    <link href="https://www.yangweixing.top/2019/05/06/%E7%8E%A9%E8%BD%ACMySQL%E4%BC%98%E5%8C%96%E5%91%BD%E4%BB%A4/"/>
+    <id>https://www.yangweixing.top/2019/05/06/%E7%8E%A9%E8%BD%ACMySQL%E4%BC%98%E5%8C%96%E5%91%BD%E4%BB%A4/</id>
+    <published>2019-05-06T10:05:00.000Z</published>
+    <updated>2022-06-04T12:19:27.841Z</updated>
+    
+    
+    <summary type="html">玩转MySQL优化命令</summary>
+    
+    
+    
+    <category term="MySQL" scheme="https://www.yangweixing.top/categories/MySQL/"/>
+    
+    
+    <category term="MySQL" scheme="https://www.yangweixing.top/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA设置后端代码开发规范</title>
+    <link href="https://www.yangweixing.top/2019/01/23/IDEA%E8%AE%BE%E7%BD%AE%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
+    <id>https://www.yangweixing.top/2019/01/23/IDEA%E8%AE%BE%E7%BD%AE%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</id>
+    <published>2019-01-23T02:33:00.000Z</published>
+    <updated>2022-06-04T12:19:27.838Z</updated>
+    
+    
+    <summary type="html">IDEA设置后端代码开发规范</summary>
+    
+    
+    
+    
+    <category term="日记本" scheme="https://www.yangweixing.top/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 简介</title>
+    <link href="https://www.yangweixing.top/2019/01/20/Docker%20%E7%AE%80%E4%BB%8B/"/>
+    <id>https://www.yangweixing.top/2019/01/20/Docker%20%E7%AE%80%E4%BB%8B/</id>
+    <published>2019-01-20T11:36:00.000Z</published>
+    <updated>2022-06-04T13:02:40.186Z</updated>
+    
+    
+    <summary type="html">微服务 Docker</summary>
+    
+    
+    
+    
+    <category term="微服务" scheme="https://www.yangweixing.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis Generator 代码自动生成工具最全解析</title>
+    <link href="https://www.yangweixing.top/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/"/>
+    <id>https://www.yangweixing.top/2019/01/02/Mybatis%20Generator%20%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%9C%80%E5%85%A8%E8%A7%A3%E6%9E%90/</id>
+    <published>2019-01-02T03:36:00.000Z</published>
+    <updated>2022-06-04T12:19:27.839Z</updated>
+    
+    
+    <summary type="html">日记 工具</summary>
+    
+    
+    
+    
+    <category term="工具" scheme="https://www.yangweixing.top/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux配置SSH Key到GitHub</title>
+    <link href="https://www.yangweixing.top/2018/12/01/Linux%E9%85%8D%E7%BD%AESSH-Key%E5%88%B0GitHub/"/>
+    <id>https://www.yangweixing.top/2018/12/01/Linux%E9%85%8D%E7%BD%AESSH-Key%E5%88%B0GitHub/</id>
+    <published>2018-12-01T06:48:40.000Z</published>
+    <updated>2022-06-04T12:19:27.839Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;1、生成SSH-Key&quot;&gt;1、生成SSH Key&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;首先检查下本机是否已经安装了SSH，在终端输入ssh即可：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/WeiXingYang.github.io/images/2743275-d5ee041fc6a3b53e.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果没有安装进行yum安装&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.yangweixing.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot 2.0 更新记录</title>
+    <link href="https://www.yangweixing.top/2018/08/21/SpringBoot%202.0%20%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95/"/>
+    <id>https://www.yangweixing.top/2018/08/21/SpringBoot%202.0%20%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95/</id>
+    <published>2018-08-21T02:43:00.000Z</published>
+    <updated>2022-06-04T12:19:27.839Z</updated>
+    
+    
+    <summary type="html">SpringBoot 2.0 更新记录</summary>
+    
+    
+    
+    
+    <category term="Java" scheme="https://www.yangweixing.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下更改MySQL的存储目录</title>
+    <link href="https://www.yangweixing.top/2018/08/06/Linux%E4%B8%8B%E6%9B%B4%E6%94%B9MySQL%E7%9A%84%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/"/>
+    <id>https://www.yangweixing.top/2018/08/06/Linux%E4%B8%8B%E6%9B%B4%E6%94%B9MySQL%E7%9A%84%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/</id>
+    <published>2018-08-06T09:06:00.000Z</published>
+    <updated>2022-06-04T12:19:27.838Z</updated>
+    
+    
+    <summary type="html">Linux下更改MySQL的存储目录</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.yangweixing.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot设置默认首页</title>
+    <link href="https://www.yangweixing.top/2018/04/26/SpringBoot%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E9%A6%96%E9%A1%B5/"/>
+    <id>https://www.yangweixing.top/2018/04/26/SpringBoot%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E9%A6%96%E9%A1%B5/</id>
+    <published>2018-04-26T07:49:00.000Z</published>
+    <updated>2022-06-04T12:19:27.840Z</updated>
+    
+    
+    <summary type="html">SpringBoot设置默认首页</summary>
+    
+    
+    
+    
+    <category term="Java" scheme="https://www.yangweixing.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于npm install失败的解决方法</title>
+    <link href="https://www.yangweixing.top/2018/04/20/%E5%85%B3%E4%BA%8Enpm%20install%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://www.yangweixing.top/2018/04/20/%E5%85%B3%E4%BA%8Enpm%20install%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2018-04-20T08:30:00.000Z</published>
+    <updated>2022-06-04T12:19:27.840Z</updated>
+    
+    
+    <summary type="html">关于npm install失败的解决方法</summary>
+    
+    
+    
+    
+    <category term="日记本" scheme="https://www.yangweixing.top/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vi/vim 粘贴内容时,保留原文件内容格式</title>
+    <link href="https://www.yangweixing.top/2018/04/20/vi%E6%88%96vim%E7%B2%98%E8%B4%B4%E5%86%85%E5%AE%B9%E6%97%B6,%E4%BF%9D%E7%95%99%E5%8E%9F%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://www.yangweixing.top/2018/04/20/vi%E6%88%96vim%E7%B2%98%E8%B4%B4%E5%86%85%E5%AE%B9%E6%97%B6,%E4%BF%9D%E7%95%99%E5%8E%9F%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%A0%BC%E5%BC%8F/</id>
+    <published>2018-04-20T07:50:00.000Z</published>
+    <updated>2022-06-04T12:19:27.840Z</updated>
+    
+    
+    <summary type="html">vi/vim 粘贴内容时,保留原文件内容格式</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.yangweixing.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux或Win下安装node和npm</title>
+    <link href="https://www.yangweixing.top/2018/04/20/Linux%E6%88%96Win%E4%B8%8B%E5%AE%89%E8%A3%85node%E5%92%8Cnpm/"/>
+    <id>https://www.yangweixing.top/2018/04/20/Linux%E6%88%96Win%E4%B8%8B%E5%AE%89%E8%A3%85node%E5%92%8Cnpm/</id>
+    <published>2018-04-20T07:31:00.000Z</published>
+    <updated>2022-06-04T12:19:27.839Z</updated>
+    
+    
+    <summary type="html">Linux或Win下安装node和npm</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.yangweixing.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下安装Git</title>
+    <link href="https://www.yangweixing.top/2018/04/17/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Git/"/>
+    <id>https://www.yangweixing.top/2018/04/17/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Git/</id>
+    <published>2018-04-17T05:41:00.000Z</published>
+    <updated>2022-06-04T12:19:27.838Z</updated>
+    
+    
+    <summary type="html">Linux下安装Git</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.yangweixing.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客主题pure使用说明</title>
+    <link href="https://www.yangweixing.top/2018/04/01/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98pure%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
+    <id>https://www.yangweixing.top/2018/04/01/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98pure%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</id>
+    <published>2018-04-01T11:54:37.000Z</published>
+    <updated>2022-06-04T12:01:06.248Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;&lt;a href=&quot;https://blog.cofess.com/2017/11/01/hexo-blog-theme-pure-usage-description.html&quot;&gt;Hexo博客主题pure使用说明&lt;/a&gt;&lt;/h1&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="Hexo" scheme="https://www.yangweixing.top/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>

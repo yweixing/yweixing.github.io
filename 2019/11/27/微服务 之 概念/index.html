@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="google-site-verification=Ep_AMKRluH_PXI77CT4B7cB6zWHg846I2QDWaX-B2pc" />
+  
+  
+    <meta name="baidu-site-verification" content="code-aC9z0FApX3" />
+  
+  
+  <title>微服务 之 概念 | William Yang</title>
+  <meta name="description" content="微服务概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务 之 概念">
+<meta property="og:url" content="https://www.yangweixing.top/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="人生的印记">
+<meta property="og:description" content="微服务概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-27T14:36:00.000Z">
+<meta property="article:modified_time" content="2022-06-04T12:19:27.841Z">
+<meta property="article:author" content="William Yang">
+<meta property="article:tag" content="微服务">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.yangweixing.top/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="人生的印记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yweixing" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">William Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yweixing" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-%E8%84%9A%E6%89%8B%E6%9E%B6/" rel="tag">JAVA 脚手架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/" rel="tag">日记本</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-JAVA/" rel="tag">设计模式 单例模式 JAVA</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/JAVA-%E8%84%9A%E6%89%8B%E6%9E%B6/" style="font-size: 13px;">JAVA 脚手架</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13px;">MySQL</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 13.67px;">微服务</a> <a href="/tags/%E6%97%A5%E8%AE%B0%E6%9C%AC/" style="font-size: 14px;">日记本</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-JAVA/" style="font-size: 13px;">设计模式 单例模式 JAVA</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/06/04/JAVA-%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%B1%87%E7%BC%96/" class="title">JAVA 开发脚手架汇编</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-06-04T13:27:01.000Z" itemprop="datePublished">2022-06-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/02/%E5%9C%A8Java%E4%B8%AD%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%86%99%E4%B8%80%E4%B8%AA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%9F/" class="title">在Java中如何正确写一个单例模式？</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-02T11:47:00.000Z" itemprop="datePublished">2020-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/09/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%8A%80%E6%9C%AF%E6%A0%88/" class="title">微服务 之 技术栈</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-09T13:00:00.000Z" itemprop="datePublished">2019-12-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/" class="title">微服务 之 概念</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-27T14:36:00.000Z" itemprop="datePublished">2019-11-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/07/23/gulp-babel%E5%8F%96%E6%B6%88%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8Fuse%20strict/" class="title">gulp-babel 取消严格模式(&#34;use strict&#34;)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-07-23T01:38:00.000Z" itemprop="datePublished">2019-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-微服务 之 概念" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      微服务 之 概念
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/" class="article-date">
+	  <time datetime="2019-11-27T14:36:00.000Z" itemprop="datePublished">2019-11-27</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h5 id="微服务起源">微服务起源</h5>
+<blockquote>
+<p>微服务是由 Peter Rodgers 博士于 2005 年度云计算博览会提出的微 Web 服务 (Micro-Web-Service) 开始，Juval Löwy 则是与他有类似的前导想法，将类别变成细粒服务 (granular services)，以作为 Microsoft 下一阶段的软件架构，其核心想法是让服务是由类似 Unix 管道的访问方式使用，而且复杂的服务背后是使用简单 URI 来开放接口，任何服务，任何细粒都能被开放 (exposed)。这个设计在 HP 的实验室被实现，具有改变复杂软件系统的强大力量。</p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>2014年，<a target="_blank" rel="noopener" href="https://martinfowler.com/">Martin Fowler</a> 与 <a target="_blank" rel="noopener" href="https://bovon.org/">James Lewis</a> 共同提出了微服务的概念，定义了微服务是由以单一应用程序构成的小服务，自己拥有自己的行程与轻量化处理，服务依业务功能设计，以全自动的方式部署，与其他服务使用 HTTP API 通信。同时服务会使用最小的规模的集中管理 (例如 Docker) 能力，服务可以用不同的编程语言与数据库等组件实现[1]。</p>
+</blockquote>
+<h5 id="什么是微服务？">什么是微服务？</h5>
+<blockquote>
+<p><em>The term “<a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#MicroservicesAndSoa">Microservice Architecture</a>” has sprung up over the last few years to describe a particular way of designing software applications as suites of independently deployable services. While there is no precise definition of this architectural style, there are certain common characteristics around organization around business capability, automated deployment, intelligence in the endpoints, and decentralized control of languages and data.</em></p>
+<p><em>“微服务体系结构”这个术语在过去几年中迅速出现，用来描述一种特殊的方法，将软件应用程序设计为可独立部署的服务套件。 虽然这种架构风格没有精确的定义，但是围绕着业务能力、自动部署、端点智能以及语言和数据的分散控制，围绕着组织有一些共同的特征。</em></p>
+<p>​																														 <a target="_blank" rel="noopener" href="https://martinfowler.com/">– Martin Fowler Microservice</a></p>
+</blockquote>
+<blockquote>
+<p>微服务 (Microservices) 是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84">软件架构风格</a>，它是以专注于单一责任与功能的小型功能区块 (Small Building Blocks) 为基础，利用模块化的方式组合出复杂的大型应用程序，各功能区块使用与语言无关 (Language-Independent/Language agnostic) 的 API 集相互通信。</p>
+<p>​																														 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E6%9C%8D%E5%8B%99">– 维基百科（中文）</a></p>
+</blockquote>
+<blockquote>
+<p>Microservices are a software development technique —a variant of the service-oriented architecture (SOA) structural style— that arranges an application as a collection of loosely coupled services.[1] In a microservices architecture, services are fine-grained and the protocols are lightweight.</p>
+<p>微服务是一种软件开发技术---- 是面向服务的体系结构结构风格的变体---- 将应用程序排列成松散耦合服务的集合。 在微服务体系结构中，服务是细粒度的，协议是轻量级的。</p>
+<p>​																													      <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Microservices">– 维基百科</a></p>
+</blockquote>
+<blockquote>
+<p>简而言之，微服务体系结构风格[1]是一种将单个应用程序开发成一套小型服务的方法，每个应用程序都在自己的进程中运行，并与轻量级机制(通常是 HTTP 资源 API)通信。 这些服务是围绕业务能力构建的，可以通过完全自动化的部署机制独立部署。 这些服务只有最低限度的集中管理，可以用不同的编程语言编写，并使用不同的数据存储技术。</p>
+</blockquote>
+<h5 id="微服务体系结构的特点-Characteristics-of-a-Microservice-Architecture">微服务体系结构的特点 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#CharacteristicsOfAMicroserviceArchitecture">Characteristics of a Microservice Architecture </a></h5>
+<ul>
+<li>通过服务实现组件化 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#ComponentizationViaServices">Componentization via Services </a></li>
+<li>围绕业务能力组织 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#OrganizedAroundBusinessCapabilities">Organized around Business Capabilities </a></li>
+<li>产品而非项目 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#ProductsNotProjects">Products not Projects </a></li>
+<li>智能端点和哑管道 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#SmartEndpointsAndDumbPipes">Smart endpoints and dumb pipes </a></li>
+<li>分权治理 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#DecentralizedGovernance">Decentralized Governance </a></li>
+<li>分散式数据管理 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#DecentralizedDataManagement">Decentralized Data Management </a></li>
+<li>基础设施自动化 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#InfrastructureAutomation">Infrastructure Automation </a></li>
+<li>为失败而设计 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#DesignForFailure">Design for failure </a></li>
+<li>进化设计 <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#EvolutionaryDesign">Evolutionary Design </a></li>
+</ul>
+<h5 id="微服务的优点">微服务的优点</h5>
+<p>第一，<strong>它解决了复杂问题</strong>。它把可能会变得庞大的单体应用程序分解成一套服务。虽然功能数量不变，但是应用程序已经被分解成可管理的块或者服务。每个服务都有一个明确定义边界的方式，如远程过程调用（RPC）驱动或消息驱动 API。微服务架构模式强制一定程度的模块化，实际上，使用单体代码来实现是极其困难的。因此，使用微服务架构模式，个体服务能被更快地开发，并更容易理解与维护。</p>
+<p>第二，这种架构使得<strong>每个服务都可以由一个团队独立专注开发</strong>。开发者可以<strong>自由选择任何符合服务 API 契约的技术</strong>。当然，更多的组织是希望通过技术选型限制来避免完全混乱的状态。然而，这种自由意味着开发人员不再有可能在这种自由的新项目开始时使用过时的技术。当编写一个新服务时，他们可以选择当前的技术。此外，由于服务较小，使用当前技术重写旧服务将变得更加可行。</p>
+<p>第三，微服务架构模式可以<strong>实现每个微服务独立部署</strong>。开发人员根本不需要去协调部署本地变更到服务。这些变更一经测试即可立即部署。比如，UI 团队可以执行 A|B 测试，并快速迭代 UI 变更。微服务架构模式使得持续部署成为可能。</p>
+<p>最后，微服务架构模式使得<strong>每个服务能够独立扩展</strong>。您可以仅部署满足每个服务的容量和可用性约束的实例数目。此外，您可以使用与服务资源要求最匹配的硬件。例如，您可以在 ECS Compute Optimized 实例上部署一个 CPU 密集型图像处理服务，并且在 ECS Memory-optimized 实例上部署一个内存数据库服务。</p>
+<h5 id="微服务的缺点">微服务的缺点</h5>
+<p>第一，微服务是<strong>一个分布式系统，其使得整体变得复杂</strong>。开发者需要选择和实现基于消息或者 RPC 的进程间通信机制。此外，由于目标请求可能很慢或者不可用，他们必须要编写代码来处理局部故障。虽然这些并不是很复杂、高深，但模块间通过语言级方法/过程调用相互调用，这比单体应用要复杂得多。</p>
+<p>第二，<strong>分区数据库架构</strong>。在基于微服务的应用程序中，您需要更新不同服务所用的数据库。通常不会选择分布式事务，不仅仅是因为 <strong>CAP 定理</strong>。他们根本不支持如今高度可扩展的 NoSQL 数据库和消息代理。您最后不得不使用基于最终一致性的方法，这对于开发人员来说更具挑战性。</p>
+<p>第三，微服务<strong>测试应用程序也很复杂</strong>。对于微服务来说需要启动该服务及其所依赖的所有服务，或者至少为这些服务配置存根。</p>
+<p>第四，<strong>实现了跨越多服务变更</strong>。例如，我们假设您正在实现一个变更服务 A、服务 B 和 服务 C 的需求，其中 A 依赖于 B，且 B 依赖于 C。在单体应用程序中，您可以简单地修改相应的模块、整合变更并一次性部署他们。相反，在微服务中您需要仔细规划和协调出现的变更至每个服务。例如，您需要更新服务 C，然后更新服务 B，最后更新服务 A。幸运的是，大多数变更只会影响一个服务，需要协调的多服务变更相对较少。</p>
+<p>第五，基于<strong>微服务应用程序的部署也是相当复杂</strong>。微服务应用程序通常由大量的服务组成。要成功部署微服务应用程序，<strong>需要求开发人员能高度控制部署方式和高度自动化</strong>。</p>
+<h5 id="小结">小结</h5>
+<p>微服务是将单一的应用程序拆分成多个微小的服务，各个小服务之间<strong>松耦合、高内聚</strong>，<strong>每个小服务可以单独进行开发，不依赖于具体的编程语言</strong>，也可以使用<strong>不同的数据存储技术</strong>，各个服务可以<strong>独立部署</strong>，拥有各自的进程，相互之间<strong>通过轻量化的机制进行通信</strong>（如基于http的API接口），所有的服务<strong>共同实现具体的业务功能</strong>。</p>
+<p><strong>微服务架构是一种思想，而真正开发时是采用分布式系统开发。</strong></p>
+<p><strong>微服务的目标在于充分分解应用程序以方便应用敏捷开发和部署。</strong></p>
+<p><strong>微服务的实现思路是将应用程序分解成一套较小的互联服务。</strong></p>
+<p>微服务通常要实现三大指标：</p>
+<ul>
+<li><strong>高可用</strong></li>
+<li><strong>高性能</strong></li>
+<li><strong>高并发</strong></li>
+</ul>
+<p>微服务通常面临的问题：</p>
+<ul>
+<li>客户端如何访问
+<ul>
+<li>API Gateway 、 WebUI</li>
+</ul>
+</li>
+<li>服务与服务之间如何通信（对内RPC，对外RESTFUL）
+<ul>
+<li>同步：
+<ul>
+<li>HTTP：跨防火墙</li>
+<li>RPC：传输效率高</li>
+</ul>
+</li>
+<li>异步
+<ul>
+<li>消息队列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>服务如何治理
+<ul>
+<li>注册中心</li>
+<li>监控中心</li>
+</ul>
+</li>
+<li>服务挂了怎么办
+<ul>
+<li>重试机制</li>
+<li>限流</li>
+<li>熔断机制</li>
+<li>负载均衡</li>
+<li>降级</li>
+<li>本地缓存</li>
+</ul>
+</li>
+</ul>
+<p>构建复杂的微服务应用程序本质上是困难的。单体架构模式只适用于简单、轻量级的应用程序，如果您使用它来构建复杂应用，您最终会陷入痛苦的境地。微服务架构模式是复杂、持续发展应用的一个更好的选择。尽管它存在着缺点和实现挑战。</p>
+<h5 id="参考书籍">参考书籍</h5>
+<blockquote>
+<p>《Microservices Patterns》</p>
+</blockquote>
+<h5 id="文献参考">文献参考</h5>
+<blockquote>
+<p>Microservices：<a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html#MicroservicesAndSoa">https://martinfowler.com/articles/microservices.html#MicroservicesAndSoa</a></p>
+<p>Martin Fowler：<a target="_blank" rel="noopener" href="https://martinfowler.com/">https://martinfowler.com/</a></p>
+<p>James Lewis：<a target="_blank" rel="noopener" href="https://bovon.org/">https://bovon.org/</a></p>
+<p>维基百科（中文）：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E6%9C%8D%E5%8B%99">https://zh.wikipedia.org/wiki/微服務</a></p>
+<p>维基百科：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Microservices">https://en.wikipedia.org/wiki/Microservices</a></p>
+</blockquote>
+<h5 id="ChangeLog">ChangeLog</h5>
+<ul>
+<li>2019-11-27 22:26 初稿</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.yangweixing.top/2019/11/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%A6%82%E5%BF%B5/" title="微服务 之 概念" target="_blank" rel="external">https://www.yangweixing.top/2019/11/27/微服务 之 概念/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yweixing" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yweixing" target="_blank"><span class="text-dark">William Yang</span><small class="ml-1x">Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/12/09/%E5%BE%AE%E6%9C%8D%E5%8A%A1%20%E4%B9%8B%20%E6%8A%80%E6%9C%AF%E6%A0%88/" title="微服务 之 技术栈"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/07/23/gulp-babel%E5%8F%96%E6%B6%88%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8Fuse%20strict/" title="gulp-babel 取消严格模式(&#34;use strict&#34;)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yweixing" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2022 William Yang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/yweixing" target="_blank"> yweixing </a>base on <a href="https://github.com/yweixing" target="_blank">yweixing</a>.
+        </div>
+    </div>
+    <div class="copyright">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次<br/>
+        本站访客数 <span id="busuanzi_value_site_uv"></span>人次
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'yPzzmU80dVte9V4bCTuM78Xk-9Nh9j0Va',
+    appKey: 'rcfot8mKlgaudeKtprYb73HT',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'weixing.info@gmail.com', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
